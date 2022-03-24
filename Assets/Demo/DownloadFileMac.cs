@@ -21,8 +21,8 @@ public class DownloadFileMac
 {
     const int oneReadLen = 16 * 1024;       // 一次读取长度 16384 = 16*kb
     const int Md5ReadLen = 16 * 1024;       // 一次读取长度 16384 = 16*kb
-    const int ReadWriteTimeOut = 60 * 1000;  // 超时等待时间
-    const int TimeOutWait = 30 * 1000;       // 超时等待时间
+    const int ReadWriteTimeOut = 360 * 1000;  // 超时等待时间
+    const int TimeOutWait = 360 * 1000;       // 超时等待时间
 
     public DownloadUnit _downUnit;
 

@@ -46,7 +46,7 @@ public class DownloadMgr : MonoBehaviour
     }
 
     private static object _lock = new object();
-    private const int MAX_THREAD_COUNT = 8;
+    private const int MAX_THREAD_COUNT = 20;
 
     private Queue<DownloadFileMac> _readyList;
     private Dictionary<Thread, DownloadFileMac> _runningList;

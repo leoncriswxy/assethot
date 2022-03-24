@@ -7,9 +7,19 @@ using UnityEngine.Networking;
 public class DownloadFileTest : MonoBehaviour
 {
     // Start is called before the first frame update
+    long downloadsize = 0;
+
+    private string GetMB(long b)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            b /= 1024;
+        }
+        return b + "MB";
+    }
+
     void Start()
     {
-
 
         string[] urls = File.ReadAllLines($"{Application.dataPath}/urls.txt");
 
@@ -25,7 +35,7 @@ public class DownloadFileTest : MonoBehaviour
                 savePath = $"{Application.streamingAssetsPath}/{i}",
                 completeFun = (bb) => { Debug.Log(bb.name); },
                 errorFun = (bb, s) => { Debug.Log(bb.name + "===" + s); },
-                progressFun = (bb, s, b) => { Debug.Log(bb.name + "---" + s + "----" + b); }
+                progressFun = (bb, s, b) => { downloadsize = downloadsize + s ;}
             };
             DownloadMgr.I.DownloadAsync(data);
         }
@@ -43,6 +53,6 @@ public class DownloadFileTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log($"已下载{GetMB(downloadsize)}");
     }
 }
